@@ -32,6 +32,7 @@ graph = Graph()
 
 ## (uuid, coordX, coordY, roomA, roomB)
 point_list = []
+
 ## point is a door
 def new_point(coordX, coordY, roomA, roomB):
 	uid = uuid.uuid4()
@@ -137,10 +138,10 @@ def match_room(x, y):
 	return -1
 	
 def auxIsSuite(roomNumber):
-	if door_number <= 4:
+	if roomNumber <= 4:
 		return False
-	for door in door_list:
-		if (roomNumber == door[2] or roomNumber == door[3]) and (door[3] > 4 and door[2] > 4):
+	for door in point_list:
+		if (roomNumber == door[3] or roomNumber == door[4]) and (door[3] > 4 and door[4] > 4):
 			return True
 	return False
 

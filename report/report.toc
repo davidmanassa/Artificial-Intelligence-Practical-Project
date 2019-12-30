@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Conte\IeC {\'u}do}{1}% 
+\contentsline {section}{\numberline {2}Motiva\IeC {\c c}\IeC {\~a}o}{2}% 
+\contentsline {section}{\numberline {3}Objetivos}{2}% 
+\contentsline {section}{\numberline {4}Implementa\IeC {\c c}\IeC {\~a}o}{3}% 
+\contentsline {subsection}{\numberline {4.1}Vari\IeC {\'a}veis auxiliares}{3}% 
+\contentsline {paragraph}{Para a conclus\IeC {\~a}o deste trabalho, recorremos \IeC {\`a} cria\IeC {\c c}\IeC {\~a}o de v\IeC {\'a}rias v\IeC {\'a}ri\IeC {\`a}veis auxiliares, para o manuseamento das informa\IeC {\c c}\IeC {\~o}es obtidas pelo rob\IeC {\^o} e pedidas pelo utilizador do programa.}{3}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Lista das salas}{3}% 
+\contentsline {subsubsection}{\numberline {4.1.2}Lista de objetos}{3}% 
+\contentsline {subsubsection}{\numberline {4.1.3}Lista de pontos de interesse}{3}% 
+\contentsline {subsubsection}{\numberline {4.1.4}Garfo dos pontos de interesse}{4}% 
+\contentsline {subsection}{\numberline {4.2}Fun\IeC {\c c}\IeC {\~o}es auxiliares}{5}% 
+\contentsline {paragraph}{Neste trabalho recorremos \IeC {\`a} cria\IeC {\c c}\IeC {\~a}o de v\IeC {\'a}rias fun\IeC {\c c}\IeC {\~o}es auxiliares, de forma a facilitar o nosso trabalho. Aqui vamos explicar algumas dessas fun\IeC {\c c}\IeC {\~o}es.}{5}% 
+\contentsline {subsubsection}{\numberline {4.2.1}Calcular a dist\IeC {\^a}ncia entre dois pontos (x1, y1) e (x2, y2)}{5}% 
+\contentsline {subsubsection}{\numberline {4.2.2}Registo de um novo ponto de interesse}{5}% 
+\contentsline {subsubsection}{\numberline {4.2.3}Algoritmo dijsktra}{5}% 
+\contentsline {subsection}{\numberline {4.3}Resposta \IeC {\`a}s perguntas}{7}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Pergunta 1: How many rooms are not occupied?}{7}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Pergunta 2: How many suites did you find until now?}{7}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Pergunta 3: Is it more probable to find people in the corridors or inside the rooms?}{7}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Pergunta 4: If you want to find a computer, to which type of room do you go to?}{8}% 
+\contentsline {subsubsection}{\numberline {4.3.5}Pergunta 5: What is the number of the closest single room?}{8}% 
+\contentsline {subsubsection}{\numberline {4.3.6}Pergunta 6: How can you go from the current room to the elevator?}{9}% 
+\contentsline {subsubsection}{\numberline {4.3.7}Pergunta 7: How many books do you estimate to find in the next 2 minutes?}{9}% 
+\contentsline {subsubsection}{\numberline {4.3.8}Pergunta 8: What is the probability of finding a table in a room without books but that has at least one chair?}{10}% 
+\contentsline {section}{\numberline {5}Conclus\IeC {\~a}o}{12}% 
+\contentsline {paragraph}{Neste trabalho concluimos que bla bla }{12}% 
+\contentsline {subsection}{\numberline {5.1}Parti\IeC {\c c}\IeC {\~a}o do trabalho}{12}% 
+\contentsline {section}{\numberline {6}Bibliografia}{12}% 
