@@ -1,11 +1,7 @@
 \documentclass{article}
-
 \usepackage[utf8]{inputenc} % Allow more characters
-
 \usepackage{graphicx} % images
-
 \usepackage{xcolor}
-
 \usepackage{listings} % code quotes
 \lstset{
   basicstyle=\ttfamily,
@@ -16,7 +12,7 @@
 }
 
 \title{Relatório de Trabalho Prático}
-\author{David Pires e Pedro Maria}
+\author{David Pires nº37272 e Pedro Maria nº39866}
 \date{Janeiro 2020}
 
 \begin{document}
@@ -36,11 +32,11 @@
 
 \section{Motivação}
 
-Somos fortes
+A grande motivação deste projeto foi conseguir de certa forma criar um robô que seja mais inteligente que o robô comum, pois estes não são capazes de reconhecer os objetos presentes no meio, retirar informações e fazer conclusões acerca do mesmo. Sendo então o objetivo deste trabalho desenvolver então essas capacidades.
 
 \section{Objetivos}
 
-Chegar ao fim
+O objetivo deste trabalho é a criação de um programa que consiga comandar um robô móvel num determinado ambiente e que este seja capaz não só de reconhecer o ambiente que o rodeia mas também responder a perguntas específicas sobre o mundo em que está inserido tendo em conta a informação que o robô recolheu até ao dado momento.
 
 \newpage
 
@@ -48,21 +44,21 @@ Chegar ao fim
 
 \subsection{Variáveis auxiliares}
 
-\paragraph{Para a conclusão deste trabalho, recorremos à criação de várias váriàveis auxiliares, para o manuseamento das informações obtidas pelo robô e pedidas pelo utilizador do programa.}
+\paragraph{Para a conclusão deste trabalho, recorremos à criação de várias variáveis auxiliares, para o manuseamento das informações obtidas pelo robô e pedidas pelo utilizador do programa.}
 
 \subsubsection{Lista das salas}
 \begin{lstlisting}[language=Python]
 room_list = [(1,-15.6,-3.0,-3.6,-0.8), (2,-12.0,-1.4,-8.9,4.8), (3,-10.6,4.8,3.6,7.9), (4,-4.6,-0.8,-0.8,4.8), (5,-15.6,-1.4,-12.5,3.0), (6,-15.6,3.0,-12.5,7.9), (7,-15.6,7.9,-10.6,11.1), (8,-10.6,7.9,-5.6,11.1), (9,-5.6,7.9,-0.5,11.1), (10,-0.5,7.9,3.6,11.1), (11,-0.8,1.4,3.6,4.8), (12,-0.8,-0.8,3.6,1.4), (13,-8.9,-0.8,-6.5,4.8),(14,-6.5,-0.8,-4.6,4.8)]
 \end{lstlisting}
 
-Esta é uma lista pré definida no programa que contem as coordenadas de cada sala. Esta lista é composta por tupulos do tipo (roomNumber, x1, y1, x2, y2) em que roomNumber corresponde ao numero da sala, x1 e y1, correspondem às coordenadas do canto inferior esquerdo da sala e x2, y2, correponde às coordenadas do canto superior direito da sala.
+Esta é uma lista pré definida no programa que contem as coordenadas de cada sala. Esta lista é composta por tuplos do tipo (roomNumber, x1, y1, x2, y2) em que roomNumber corresponde ao numero da sala, x1 e y1, correspondem às coordenadas do canto inferior esquerdo da sala e x2, y2, corresponde às coordenadas do canto superior direito da sala.
 
 \subsubsection{Lista de objetos}
 \begin{lstlisting}[language=Python]
 object_list = []
 \end{lstlisting}  
 
-Esta é uma lista, que é incrementada dinamicamente à medida que o robô descobre um novo objeto. Esta lista será composta por tupulos, com a seguinte estrutura: (roomNumber, objectName, objectID), em que roomNumber corresponde ao numero da sala onde foi encontrado o objeto, objectName corresponde ao nome do objecto e objectID corresponde ao seu ID.
+Esta é uma lista, que é incrementada dinamicamente à medida que o robô descobre um novo objeto. Esta lista será composta por tuplos, com a seguinte estrutura: (roomNumber, objectName, objectID), em que roomNumber corresponde ao numero da sala onde foi encontrado o objeto, objectName corresponde ao nome do objecto e objectID corresponde ao seu ID.
 
 \subsubsection{Lista de pontos de interesse}
 \begin{lstlisting}[language=Python]
@@ -194,6 +190,8 @@ Para isto usamos o código feito por Ben Keen (Link na Bibliografia). Esta funç
 	print( " There are %d rooms not occuped by people in %d known rooms. " % (((10 - counterNotKnown) - counterOccuped), (10 - counterNotKnown)) ) 
 \end{lstlisting}
 
+Para responder a esta pergunta é feita uma análise a todas as salas que o robô conhece e para cada uma das salas vai ser verificado se há pelo menos uma pessoa em cada sala ou não, havendo assim uma contagem das salas que estão ocupadas por pessoas.
+
 \subsubsection{Pergunta 2: How many suites did you find until now?}
 \begin{lstlisting}[language=Python]
   def question2():
@@ -203,6 +201,8 @@ Para isto usamos o código feito por Ben Keen (Link na Bibliografia). Esta funç
 			counter += 1
 	print( " I've found %d Suite rooms so far. " % counter )
 \end{lstlisting}
+
+Para responder a esta pergunta é feita uma análise a todas a salas que o robô conhece e todas aquelas que forem do tipo "Suite room", e então retornamos a contagem das mesmas.
 
 \subsubsection{Pergunta 3: Is it more probable to find people in the corridors or inside the rooms?}
 \begin{lstlisting}[language=Python]
@@ -225,6 +225,8 @@ Para isto usamos o código feito por Ben Keen (Link na Bibliografia). Esta funç
 		print( " The probability of find people in rooms or in the halls is equal. " )
 \end{lstlisting}
 
+Para responder a esta pergunta contamos o número de pessoas nos corredores e o número de pessoas nas salas, comparamos os dois valores e retornamos resultado dessa comparação.
+
 \subsubsection{Pergunta 4: If you want to find a computer, to which type of room do you go to?}
 \begin{lstlisting}[language=Python]
   def question4():
@@ -240,6 +242,8 @@ Para isto usamos o código feito por Ben Keen (Link na Bibliografia). Esta funç
 	else:
 		print( " Go to room number %d to find a Computer. " % roomNumber )
 \end{lstlisting}
+
+Para responder a esta pergunta apenas se vai verificar em todas as salas que o robô conhece quais contêm computadores e retornamos uma sala que contenha então um computador.
 
 \subsubsection{Pergunta 5: What is the number of the closest single room?}
 \begin{lstlisting}[language=Python]
@@ -335,14 +339,17 @@ Para responder a esta pergunta usamos a Regra de Bayes, calculando \[P(T | C, ~B
 \newpage
 \section{Conclusão}
 
-\paragraph{Neste trabalho concluimos que bla bla }
+\paragraph{Com este trabalho concluímos que mesmo para um ambiente controlado podem surgir algumas dificuldades em questões que aparentam ser simples, e que assim sendo serão ainda mais complicadas de implementar no mundo real. }
 
 \subsection{Partição do trabalho}
 
 Perguntas 1 a 4: Pedro Maria
 \newline Perguntas 5 a 8: David Pires
-\newline Relatório: Trabalho conjunto
-\newline Apresentação: Trabalho conjunto
+\newline Relatório:
+\newline Motivação, Objetivos e Conclusão: Pedro Maria
+\newline Perguntas 1 a 4: Pedro Maria
+\newline Perguntas 5 a 8: David Pires
+\newline Apresentação: Pedro Maria
 
 \section{Bibliografia}
 
