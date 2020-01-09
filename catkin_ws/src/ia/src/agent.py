@@ -9,8 +9,8 @@ from nav_msgs.msg import Odometry
 import math
 import uuid
 import time
-from Graph import Graph
 import CoordHelper
+import Graph
 
 startTime = time.time()
 
@@ -28,7 +28,7 @@ object_list = []
 
 ## UUID --distance-> UUID
 ## UUID is a Point UUID
-graph = Graph()
+graph = Graph.Graph()
 
 ## (uuid, coordX, coordY, roomA, roomB)
 point_list = []
@@ -91,44 +91,7 @@ def dijsktraRooms(roomA, roomB):
 			pointB = point[0]
 	if (pointA == 0 or pointB == 0):
 		return "No route"
-	return (dijsktra(graph, pointA, pointB))
-
-def dijsktra(graph, initial, end):
-    # shortest paths is a dict of nodes
-    # whose value is a tuple of (previous node, weight)
-    shortest_paths = {initial: (None, 0)}
-    current_node = initial
-    visited = set()
-    
-    while current_node != end:
-        visited.add(current_node)
-        destinations = graph.edges[current_node]
-        weight_to_current_node = shortest_paths[current_node][1]
-
-        for next_node in destinations:
-            weight = graph.weights[(current_node, next_node)] + weight_to_current_node
-            if next_node not in shortest_paths:
-                shortest_paths[next_node] = (current_node, weight)
-            else:
-                current_shortest_weight = shortest_paths[next_node][1]
-                if current_shortest_weight > weight:
-                    shortest_paths[next_node] = (current_node, weight)
-        
-        next_destinations = {node: shortest_paths[node] for node in shortest_paths if node not in visited}
-        if not next_destinations:
-            return "Route Not Possible"
-        # next node is the destination with the lowest weight
-        current_node = min(next_destinations, key=lambda k: next_destinations[k][1])
-    
-    # Work back through destinations in shortest path
-    path = []
-    while current_node is not None:
-        path.append(current_node)
-        next_node = shortest_paths[current_node][0]
-        current_node = next_node
-    # Reverse path
-    path = path[::-1]
-    return path
+	return (Graph.dijsktra(graph, pointA, pointB))
 
 def match_room(x, y):
 	for room in room_list:
@@ -170,6 +133,25 @@ def getRoomType(roomNumber):
 	else:
 		return "Generic room"
 
+def knownRooms():
+	c = 0
+	for i in range(5, 14):
+		for obj in object_list:
+			if obj[0] == i:
+				c += 1
+				break
+	return c
+
+def knownHalls():
+	c = []
+	for point in point_list:
+		if point[3] <= 4 and point[3] > 0:
+			if point[3] not in c:
+				c.append(point[3])
+		if point[4] <= 4 and point[4] > 0:
+			if point[4] not in c:
+				c.append(point[4])
+	return len(c)
 
 # ---------------------------------------------------------------
 
@@ -194,7 +176,7 @@ def question2():
 	for roomNumber in range(1, len(room_list) + 1):
 		if (getRoomType(roomNumber) == "Suite room"):
 			counter += 1
-	print( " I've found %d Suite rooms so far. " % counter )
+	print( " I've found %d Suite rooms so far. " % (counter / 2) )
 
 # 3 - É mais provavel encontrar pessoas nos corredores ou nos quartos?
 def question3():
@@ -206,12 +188,18 @@ def question3():
 				counterHall += 1
 			else:
 				counterRooms += 1
-	if counterHall > counterRooms:
-		print( " Is more likely to meet people in the halls. " )
-	elif counterHall < counterRooms:
-		print( " Is more likely to meet people in the rooms. " )
-	elif counterHall == 0 and counterRooms == 0:
+	if counterHall == 0 and counterRooms == 0:
 		print ( "I don't know any person yet. " )
+		return
+	if knownHalls() == 0 or knownRooms() == 0:
+		print ( "I don't know any person yet. " )
+		return
+	probHall = counterHall / knownHalls()
+	probRoom = counterRooms / knownRooms()
+	if probHall > probRoom:
+		print( " Is more likely to meet people in the halls. " )
+	elif probHall < probRoom:
+		print( " Is more likely to meet people in the rooms. " )
 	else:
 		print( " The probability of find people in rooms or in the halls is equal. " )
 
